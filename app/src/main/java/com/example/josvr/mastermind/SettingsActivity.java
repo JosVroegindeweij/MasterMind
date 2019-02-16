@@ -3,7 +3,7 @@ package com.example.josvr.mastermind;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-class SettingsActivity extends AppCompatActivity {
+public class SettingsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

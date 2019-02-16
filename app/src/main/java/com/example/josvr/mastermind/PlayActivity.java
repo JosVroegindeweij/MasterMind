@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-class PlayActivity extends AppCompatActivity {
+public class PlayActivity extends AppCompatActivity {
 
     private ObjectAnimator currentAnimation = null;
     private MasterMindPuzzle mmp;
