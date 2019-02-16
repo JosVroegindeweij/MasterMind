@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MasterMind</string>
+    <string name="niy">Not implemented yet</string>
+    <string name="settings">Settings</string>
+    <string name="tutorial">Tutorial</string>
+    <string name="play">Play</string>
+    <string name="readytogo">Ready to go?</string>
+    <string name="ContentDescriptionCodes">These circles contain the guessed codes</string>
+</resources>

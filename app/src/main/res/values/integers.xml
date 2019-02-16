@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="guessWidth">40</integer>
+    <integer name="guessHeight">@integer/guessWidth</integer>
+    <integer name="feedbackWidth">18</integer>
+    <integer name="feedbackHeight">@integer/feedbackWidth</integer>
+</resources>
