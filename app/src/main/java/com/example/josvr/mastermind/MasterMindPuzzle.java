@@ -18,22 +18,11 @@ class MasterMindPuzzle {
      */
     MasterMindPuzzle(PlayActivity pa) {
         this.playActivity = pa;
-        int[] code = new int[4];
+        code = new int[4];
         for (int i = 0; i < code.length; i++) {
             code[i] = randomColor();
         }
-        this.code = code;
-        System.out.println("Black: " + playActivity.getResources().getColor(R.color.black));
-        System.out.println("White: " + playActivity.getResources().getColor(R.color.white));
-        System.out.println("Green: " + playActivity.getResources().getColor(R.color.green));
-        System.out.println("Yellow: " + playActivity.getResources().getColor(R.color.yellow));
-        System.out.println("Blue: " + playActivity.getResources().getColor(R.color.blue));
-        System.out.println("Red: " + playActivity.getResources().getColor(R.color.red));
-        System.out.println("Length of code: " + code.length);
 
-        for (int i = 0; i < code.length; i++) {
-            System.out.println("Actual code: " + i + ":" + code[i]);
-        }
         guessesColor = new int[totalRows][totalCols];
         feedbackColor = new int[totalRows][totalCols];
         for (int[] cg : guessesColor)
@@ -83,8 +72,6 @@ class MasterMindPuzzle {
 
         // Checking for black feedback pins.
         for (int i = 0; i < 4; i++) {
-            System.out.println("code[" + i + "]: " + code[i]);
-            System.out.println("guess[" + i + "]: " + guess[i]);
             if (code[i] == guess[i]) {
                 addFirstEmpty(feedbackColor[selectedRow], playActivity.getResources().getColor(R.color.black));
                 codePlaces[i] = true;
@@ -97,7 +84,6 @@ class MasterMindPuzzle {
             if (!codePlaces[i])
                 for (int j = 0; j < 4; j++)
                     if (!attemptPlaces[j] && code[i] == guess[j]) {
-                        System.out.println("Good afternoon!");
                         addFirstEmpty(feedbackColor[selectedRow], playActivity.getResources().getColor(R.color.white));
                         attemptPlaces[j] = true;
                         break;
