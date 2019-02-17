@@ -32,6 +32,9 @@ public class PlayActivity extends AppCompatActivity {
         initiateGame();
     }
 
+    /**
+     * This method initiates what's needed to play the actual game, like the logic, the buttons and guess circles.
+     */
     private void initiateGame(){
         mmp = new MasterMindPuzzle(this);
         int totalRows = mmp.getTotalRows();
@@ -79,6 +82,7 @@ public class PlayActivity extends AppCompatActivity {
     private void initiateButtons(){
         findViewById(R.id.submit).setOnClickListener(new OnClickListenerSubmit(mmp, this));
         findViewById(R.id.clear).setOnClickListener(new OnClickListenerClear(mmp, this));
+
         findViewById(R.id.buttonBlack).setOnClickListener(new OnClickListenerColor(this, mmp, getResources().getColor(R.color.black)));
         findViewById(R.id.buttonWhite).setOnClickListener(new OnClickListenerColor(this, mmp, getResources().getColor(R.color.white)));
         findViewById(R.id.buttonBlue).setOnClickListener(new OnClickListenerColor(this, mmp, getResources().getColor(R.color.blue)));
