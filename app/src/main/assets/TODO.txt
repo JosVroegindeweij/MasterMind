@@ -10,5 +10,4 @@ Selecting a color on a circle that is already that color needs to reset the circ
 The availability of starting a second game needs to be checked.
 Game needs to resume when closing app and booting up again. (Maybe ask if user wants to resume game)
 Pictograms need to be placed on buttons.
-Javadoc needs to be added.
 Code should become more tidy.

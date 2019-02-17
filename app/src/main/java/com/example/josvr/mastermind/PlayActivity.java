@@ -35,7 +35,7 @@ public class PlayActivity extends AppCompatActivity {
     /**
      * This method initiates what's needed to play the actual game, like the logic, the buttons and guess circles.
      */
-    private void initiateGame(){
+    private void initiateGame() {
         mmp = new MasterMindPuzzle(this);
         int totalRows = mmp.getTotalRows();
         int totalCols = mmp.getTotalCols();
@@ -51,7 +51,7 @@ public class PlayActivity extends AppCompatActivity {
     /**
      * This method will inflate the guess layout and add it to the playing field. Also adds OnClickListeners.
      */
-    private void initiatePlayingField(){
+    private void initiatePlayingField() {
         LayoutInflater li = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         ViewGroup vgGuess = findViewById(R.id.guesses);
 
@@ -79,7 +79,7 @@ public class PlayActivity extends AppCompatActivity {
     /**
      * This method sets up the buttons with OnClickListeners.
      */
-    private void initiateButtons(){
+    private void initiateButtons() {
         findViewById(R.id.submit).setOnClickListener(new OnClickListenerSubmit(mmp, this));
         findViewById(R.id.clear).setOnClickListener(new OnClickListenerClear(mmp, this));
 
@@ -93,6 +93,7 @@ public class PlayActivity extends AppCompatActivity {
 
     /**
      * Updates the color of the guess array at {@code row},{@code col} according to the color array.
+     *
      * @param row row
      * @param col col
      */
@@ -102,6 +103,7 @@ public class PlayActivity extends AppCompatActivity {
 
     /**
      * Updates the color of the guess array at {@code row} according to the color array.
+     *
      * @param row row
      */
     void updateColor(int row) {
@@ -119,6 +121,11 @@ public class PlayActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * This method makes the given view pulsate.
+     *
+     * @param v view
+     */
     void startPulse(final View v) {
         if (currentAnimation != null) {
             currentAnimation.end();
@@ -141,13 +148,14 @@ public class PlayActivity extends AppCompatActivity {
         scaleDown.start();
 
         currentAnimation = scaleDown;
-
     }
 
-    void startPulse(int row, int col) {
-        startPulse(guesses[row][col]);
-    }
-
+    /**
+     * Makes the guess at position {@code row}, {@code col} pulsate.
+     *
+     * @param row row
+     * @param col col
+     */
     void startPulseViewAt(int row, int col) {
         startPulse(guesses[row][col]);
     }

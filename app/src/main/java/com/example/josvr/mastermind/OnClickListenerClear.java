@@ -17,6 +17,6 @@ class OnClickListenerClear implements OnClickListener {
         mmp.resetRow();
         playActivity.updateColor(mmp.getSelectedRow());
         mmp.setSelectedCol(0);
-        playActivity.startPulse(mmp.getSelectedRow(), 0);
+        playActivity.startPulseViewAt(mmp.getSelectedRow(), 0);
     }
 }

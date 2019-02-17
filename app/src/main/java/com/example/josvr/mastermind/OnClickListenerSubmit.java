@@ -30,6 +30,6 @@ class OnClickListenerSubmit implements OnClickListener {
         mmp.checkLoss();
         mmp.setSelectedCol(0);
 
-        playActivity.startPulse(selectedRow, 0);
+        playActivity.startPulseViewAt(selectedRow, 0);
     }
 }

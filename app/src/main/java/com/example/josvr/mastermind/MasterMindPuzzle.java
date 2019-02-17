@@ -105,18 +105,27 @@ class MasterMindPuzzle {
             }
     }
 
+    /**
+     * Checks whether the player has succeeded in the game.
+     */
     void checkVictory() {
         if (feedbackColor[selectedRow][totalCols - 1] == playActivity.getResources().getColor(R.color.black)) {
             victory();
         }
     }
 
+    /**
+     * Checks whether the player has failed in the game.
+     */
     void checkLoss() {
         if (selectedRow == 10) {
             loss();
         }
     }
 
+    /**
+     * Resets the colors in the selected row of guesses.
+     */
     void resetRow() {
         Arrays.fill(guessesColor[selectedRow], playActivity.getResources().getColor(R.color.gray));
     }
@@ -135,6 +144,13 @@ class MasterMindPuzzle {
         System.out.println("Not Implemented Yet!");
     }
 
+    /**
+     * Returns color code of either guess or feedback color array (decided by {@code feedback} at position {@code col}.
+     *
+     * @param gof either "feedback" or "guess" to denote which color array to look in
+     * @param col col
+     * @return color code
+     */
     int getColor(String gof, int col) {
         switch (gof) {
             case "feedback":
@@ -145,11 +161,21 @@ class MasterMindPuzzle {
         return -1;
     }
 
+    /**
+     * Changes the color in guess array at selected position.
+     *
+     * @param color color
+     */
     void setColor(int color) {
         guessesColor[selectedRow][selectedCol] = color;
         playActivity.updateColor(selectedRow, selectedCol);
     }
 
+    /**
+     * Checks if all 4 colors of the code have been entered.
+     *
+     * @return {@code true} if 4 colors are provided, {@code false} otherwise
+     */
     boolean isComplete() {
         for (int c : guessesColor[selectedRow])
             if (c == playActivity.getResources().getColor(R.color.gray)) return false;
@@ -176,6 +202,11 @@ class MasterMindPuzzle {
         this.selectedCol = selectedCol;
     }
 
+    /**
+     * Sets selected column to the next free column.
+     * If there is no free column after current selected column, selected column will be set to first free column.
+     * If there is no free column, will not change selected column.
+     */
     void setSelectedColNextFreeCol() {
         int col = findFirstFreeColAfterCurrentCol();
         if (col != -1) {
@@ -187,6 +218,11 @@ class MasterMindPuzzle {
         if (col != -1) setSelectedCol(col);
     }
 
+    /**
+     * looks for first unfilled column after currently selected column.
+     *
+     * @return index of first free column, -1 if no such exists.
+     */
     private int findFirstFreeColAfterCurrentCol() {
         for (int i = selectedCol; i < guessesColor[selectedRow].length; i++) {
             if (guessesColor[selectedRow][i] == playActivity.getResources().getColor(R.color.gray))
@@ -195,6 +231,11 @@ class MasterMindPuzzle {
         return -1;
     }
 
+    /**
+     * looks for first unfilled column.
+     *
+     * @return index of first free column, -1 if no such exists.
+     */
     private int findFirstFreeCol() {
         for (int i = 0; i < selectedCol; i++) {
             if (guessesColor[selectedRow][i] == playActivity.getResources().getColor(R.color.gray))
@@ -203,6 +244,11 @@ class MasterMindPuzzle {
         return -1;
     }
 
+    /**
+     * increments selected row by 1.
+     *
+     * @return new selected row.
+     */
     int incSelectedRow() {
         return ++selectedRow;
     }
