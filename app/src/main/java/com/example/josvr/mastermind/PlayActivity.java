@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-class PlayActivity extends AppCompatActivity {
+public class PlayActivity extends AppCompatActivity {
 
     private ObjectAnimator currentAnimation = null;
     private MasterMindPuzzle mmp;
@@ -29,49 +29,54 @@ class PlayActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_play);
 
+        initiateGame();
+    }
+
+    private void initiateGame(){
         mmp = new MasterMindPuzzle(this);
         int totalRows = mmp.getTotalRows();
         int totalCols = mmp.getTotalCols();
         guesses = new ImageView[totalRows][totalCols];
         feedback = new ImageView[totalRows][totalCols];
 
+        initiatePlayingField();
+        initiateButtons();
 
-        LayoutInflater
-                li = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        startPulse(guesses[mmp.getSelectedRow()][mmp.getSelectedCol()]);
+    }
 
+    /**
+     * This method will inflate the guess layout and add it to the playing field. Also adds OnClickListeners.
+     */
+    private void initiatePlayingField(){
+        LayoutInflater li = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         ViewGroup vgGuess = findViewById(R.id.guesses);
 
         for (int i = 0; i < 10; i++) {
             LinearLayout guess = (LinearLayout) li.inflate(R.layout.guess, vgGuess, false);
 
-            ImageView guess0 = guess.findViewById(R.id.guess0);
-            ImageView guess1 = guess.findViewById(R.id.guess1);
-            ImageView guess2 = guess.findViewById(R.id.guess2);
-            ImageView guess3 = guess.findViewById(R.id.guess3);
-            ImageView feedback0 = guess.findViewById(R.id.feedback0);
-            ImageView feedback1 = guess.findViewById(R.id.feedback1);
-            ImageView feedback2 = guess.findViewById(R.id.feedback2);
-            ImageView feedback3 = guess.findViewById(R.id.feedback3);
+            guesses[i][0] = guess.findViewById(R.id.guess0);
+            guesses[i][1] = guess.findViewById(R.id.guess1);
+            guesses[i][2] = guess.findViewById(R.id.guess2);
+            guesses[i][3] = guess.findViewById(R.id.guess3);
 
-            guesses[i][0] = guess0;
-            guesses[i][1] = guess1;
-            guesses[i][2] = guess2;
-            guesses[i][3] = guess3;
-            feedback[i][0] = feedback0;
-            feedback[i][1] = feedback1;
-            feedback[i][2] = feedback2;
-            feedback[i][3] = feedback3;
+            feedback[i][0] = guess.findViewById(R.id.feedback0);
+            feedback[i][1] = guess.findViewById(R.id.feedback1);
+            feedback[i][2] = guess.findViewById(R.id.feedback2);
+            feedback[i][3] = guess.findViewById(R.id.feedback3);
 
-            guess0.setOnClickListener(new OnClickListenerGuess(mmp, this, i, 0));
-            guess1.setOnClickListener(new OnClickListenerGuess(mmp, this, i, 1));
-            guess2.setOnClickListener(new OnClickListenerGuess(mmp, this, i, 2));
-            guess3.setOnClickListener(new OnClickListenerGuess(mmp, this, i, 3));
+            for (int j = 0; j < guesses[0].length; j++) {
+                guesses[i][j].setOnClickListener(new OnClickListenerGuess(mmp, this, i, j));
+            }
 
             vgGuess.addView(guess);
         }
+    }
 
-        startPulse(guesses[mmp.getSelectedRow()][mmp.getSelectedCol()]);
-
+    /**
+     * This method sets up the buttons with OnClickListeners.
+     */
+    private void initiateButtons(){
         findViewById(R.id.submit).setOnClickListener(new OnClickListenerSubmit(mmp, this));
         findViewById(R.id.clear).setOnClickListener(new OnClickListenerClear(mmp, this));
         findViewById(R.id.buttonBlack).setOnClickListener(new OnClickListenerColor(this, mmp, getResources().getColor(R.color.black)));
@@ -82,16 +87,28 @@ class PlayActivity extends AppCompatActivity {
         findViewById(R.id.buttonRed).setOnClickListener(new OnClickListenerColor(this, mmp, getResources().getColor(R.color.red)));
     }
 
+    /**
+     * Updates the color of the guess array at {@code row},{@code col} according to the color array.
+     * @param row row
+     * @param col col
+     */
     void updateColor(int row, int col) {
-        guesses[row][col].getDrawable().setTint(mmp.getColor("guess", col));
+        guesses[row][col].getDrawable().mutate().setTint(mmp.getColor("guess", col));
     }
 
+    /**
+     * Updates the color of the guess array at {@code row} according to the color array.
+     * @param row row
+     */
     void updateColor(int row) {
         for (int i = 0; i < guesses[0].length; i++) {
             updateColor(row, i);
         }
     }
 
+    /**
+     * Updates the color of the feedback array at the selected row according to the color array.
+     */
     void updateFeedback() {
         for (int i = 0; i < feedback[0].length; i++) {
             feedback[mmp.getSelectedRow()][i].getDrawable().setTint(mmp.getColor("feedback", i));
