@@ -1,0 +1,12 @@
+TO-DO:
+Drawables need to get cloned before setting tint.
+Game needs to stop after 10 failed attempts.
+Game needs to stop when the code is guessed correctly.
+MasterMindPuzzle.victory() needs to be implemented.
+MasterMindPuzzle.loss() needs to be implemented.
+Possible memory leaks should be eliminated.
+SettingsActivity needs to be implemented.
+TutorialActivity needs to be implemented.
+Selecting a color on a circle that is already that color needs to reset the circle.
+The availability of starting a second game needs to be checked.
+Pictograms need to be placed on buttons.
