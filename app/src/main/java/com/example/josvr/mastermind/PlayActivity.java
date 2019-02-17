@@ -117,7 +117,7 @@ public class PlayActivity extends AppCompatActivity {
      */
     void updateFeedback() {
         for (int i = 0; i < feedback[0].length; i++) {
-            feedback[mmp.getSelectedRow()][i].getDrawable().setTint(mmp.getColor("feedback", i));
+            feedback[mmp.getSelectedRow()][i].getDrawable().mutate().setTint(mmp.getColor("feedback", i));
         }
     }
 

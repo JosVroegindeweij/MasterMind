@@ -23,6 +23,12 @@
             android:parentActivityName=".MainActivity"/>
         <activity android:name=".SettingsActivity"
             android:parentActivityName=".MainActivity"/>
+        <activity android:name=".WinActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".LossActivity"
+            android:parentActivityName=".MainActivity"/>
+
+
     </application>
 
 </manifest>

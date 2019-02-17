@@ -1,7 +1,10 @@
 package com.example.josvr.mastermind;
 
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.support.v7.app.AppCompatActivity;
+
 
 class OnClickListenerSubmit implements OnClickListener {
     private MasterMindPuzzle mmp;
@@ -25,11 +28,17 @@ class OnClickListenerSubmit implements OnClickListener {
 
         for (int i = 0; i < totalCols; i++) playActivity.updateColor(selectedRow, i);
 
-        mmp.checkVictory();
-        selectedRow = mmp.incSelectedRow();
-        mmp.checkLoss();
-        mmp.setSelectedCol(0);
+        if (mmp.checkVictory())
+            playActivity.startActivity(new Intent(playActivity.getApplicationContext(), WinActivity.class));
+        else {
+            selectedRow = mmp.incSelectedRow();
+            if (mmp.checkLoss())
+                playActivity.startActivity(new Intent(playActivity.getApplicationContext(), LossActivity.class));
+            else {
+                mmp.setSelectedCol(0);
 
-        playActivity.startPulseViewAt(selectedRow, 0);
+                playActivity.startPulseViewAt(selectedRow, 0);
+            }
+        }
     }
 }

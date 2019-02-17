@@ -16,8 +16,12 @@ class OnClickListenerColor implements OnClickListener {
 
     @Override
     public void onClick(View v) {
-        mmp.setColor(color);
-        mmp.setSelectedColNextFreeCol();
-        playActivity.startPulseViewAt(mmp.getSelectedRow(), mmp.getSelectedCol());
+        int currentColor = mmp.getColor("guess", mmp.getSelectedCol());
+        if (color == currentColor) mmp.setColor(playActivity.getResources().getColor(R.color.gray));
+        else {
+            mmp.setColor(color);
+            mmp.setSelectedColNextFreeCol();
+            playActivity.startPulseViewAt(mmp.getSelectedRow(), mmp.getSelectedCol());
+        }
     }
 }

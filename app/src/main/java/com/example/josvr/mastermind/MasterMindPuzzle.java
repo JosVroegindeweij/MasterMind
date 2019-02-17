@@ -107,20 +107,20 @@ class MasterMindPuzzle {
 
     /**
      * Checks whether the player has succeeded in the game.
+     *
+     * @return {@code true} if game is won, {@code false} otherwise.
      */
-    void checkVictory() {
-        if (feedbackColor[selectedRow][totalCols - 1] == playActivity.getResources().getColor(R.color.black)) {
-            victory();
-        }
+    boolean checkVictory() {
+        return feedbackColor[selectedRow][totalCols - 1] == playActivity.getResources().getColor(R.color.black);
     }
 
     /**
      * Checks whether the player has failed in the game.
+     *
+     * @return {@code true} if game is lost, {@code false} otherwise.
      */
-    void checkLoss() {
-        if (selectedRow == 10) {
-            loss();
-        }
+    boolean checkLoss() {
+        return selectedRow == 10;
     }
 
     /**
@@ -128,20 +128,6 @@ class MasterMindPuzzle {
      */
     void resetRow() {
         Arrays.fill(guessesColor[selectedRow], playActivity.getResources().getColor(R.color.gray));
-    }
-
-    /**
-     * Displays victory message.
-     */
-    private void victory() {
-        System.out.println("Not Implemented Yet!");
-    }
-
-    /**
-     * Displays loss message.
-     */
-    private void loss() {
-        System.out.println("Not Implemented Yet!");
     }
 
     /**
