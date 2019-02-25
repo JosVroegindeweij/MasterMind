@@ -39,7 +39,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.5"
+        android:layout_weight="1"
         android:weightSum="6"
         android:layout_marginTop="8dp"
         android:layout_marginLeft="16dp"
@@ -51,7 +51,6 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:layout_marginBottom="16dp"
             android:layout_marginRight="2dp"
             android:layout_marginLeft="2dp"
             android:background="@drawable/color_button_red"
@@ -63,7 +62,6 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:layout_marginBottom="16dp"
             android:layout_marginRight="2dp"
             android:layout_marginLeft="2dp"
             android:background="@drawable/color_button_green"/>
@@ -74,7 +72,6 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:layout_marginBottom="16dp"
             android:layout_marginRight="2dp"
             android:layout_marginLeft="2dp"
             android:background="@drawable/color_button_blue"/>
@@ -85,7 +82,6 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:layout_marginBottom="16dp"
             android:layout_marginRight="2dp"
             android:layout_marginLeft="2dp"
             android:background="@drawable/color_button_white"/>
@@ -96,7 +92,6 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:layout_marginBottom="16dp"
             android:layout_marginRight="2dp"
             android:layout_marginLeft="2dp"
             android:background="@drawable/color_button_black"/>
@@ -107,7 +102,6 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:layout_marginBottom="16dp"
             android:layout_marginRight="2dp"
             android:layout_marginLeft="2dp"
             android:background="@drawable/color_button_yellow"/>
@@ -118,23 +112,24 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.5"
+        android:layout_weight="2"
         android:weightSum="2">
-        <Button
-            android:backgroundTint="@color/white"
+
+        <ImageButton
             android:id="@+id/submit"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="SUBMIT"
-            />
-        <Button
+            android:src="@mipmap/riolu_bless"
+            android:scaleType="fitCenter" />
+        <ImageButton
             android:backgroundTint="@color/white"
             android:id="@+id/clear"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="CLEAR"/>
+            android:src="@mipmap/riolu_trash"
+            android:scaleType="fitCenter" />
     </LinearLayout>
 
 </LinearLayout>

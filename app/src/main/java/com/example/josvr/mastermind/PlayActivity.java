@@ -159,4 +159,12 @@ public class PlayActivity extends AppCompatActivity {
     void startPulseViewAt(int row, int col) {
         startPulse(guesses[row][col]);
     }
+
+    void displayVictory(){
+
+    }
+
+    void displayLoss(){
+
+    }
 }

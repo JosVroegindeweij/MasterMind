@@ -29,11 +29,11 @@ class OnClickListenerSubmit implements OnClickListener {
         for (int i = 0; i < totalCols; i++) playActivity.updateColor(selectedRow, i);
 
         if (mmp.checkVictory())
-            playActivity.startActivity(new Intent(playActivity.getApplicationContext(), WinActivity.class));
+            playActivity.displayLoss();
         else {
             selectedRow = mmp.incSelectedRow();
             if (mmp.checkLoss())
-                playActivity.startActivity(new Intent(playActivity.getApplicationContext(), LossActivity.class));
+                playActivity.displayVictory();
             else {
                 mmp.setSelectedCol(0);
 
