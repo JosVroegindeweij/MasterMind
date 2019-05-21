@@ -116,6 +116,7 @@
         android:weightSum="2">
 
         <ImageButton
+            android:backgroundTint="@color/white"
             android:id="@+id/submit"
             android:layout_width="0dp"
             android:layout_height="match_parent"

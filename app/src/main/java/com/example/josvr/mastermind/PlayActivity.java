@@ -7,13 +7,14 @@ import android.animation.PropertyValuesHolder;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
+import java.util.stream.IntStream;
 
 public class PlayActivity extends AppCompatActivity {
 
@@ -37,8 +38,7 @@ public class PlayActivity extends AppCompatActivity {
      */
     private void initiateGame() {
         mmp = new MasterMindPuzzle(this);
-        int totalRows = mmp.getTotalRows();
-        int totalCols = mmp.getTotalCols();
+        int totalRows = mmp.getTotalRows(), totalCols = mmp.getTotalCols();
         guesses = new ImageView[totalRows][totalCols];
         feedback = new ImageView[totalRows][totalCols];
 
@@ -107,18 +107,15 @@ public class PlayActivity extends AppCompatActivity {
      * @param row row
      */
     void updateColor(int row) {
-        for (int i = 0; i < guesses[0].length; i++) {
-            updateColor(row, i);
-        }
+        IntStream.range(0, guesses[row].length).forEach(s -> updateColor(row, s));
     }
 
     /**
      * Updates the color of the feedback array at the selected row according to the color array.
      */
     void updateFeedback() {
-        for (int i = 0; i < feedback[0].length; i++) {
-            feedback[mmp.getSelectedRow()][i].getDrawable().mutate().setTint(mmp.getColor("feedback", i));
-        }
+        int selectedRow = mmp.getSelectedRow();
+        IntStream.range(0, feedback[selectedRow].length).forEach(s -> feedback[selectedRow][s].getDrawable().mutate().setTint(mmp.getColor("feedback", s)));
     }
 
     /**
