@@ -5,8 +5,6 @@ TutorialActivity needs to be implemented.
 The availability of starting a second game needs to be checked.
 Game needs to resume when closing app and booting up again. (Maybe ask if user wants to resume game)
 Possible memory leaks should be eliminated.
-Code should become more tidy.
-for-loops should be exchanged for streams where possible.
-Last 2 points are fixed until MasterMindPuzzle.addFirstEmpty
+Code should become more tidy. There are some places where code should be in a different class.
 Ending of the game is broken.
 Strings should be translated.

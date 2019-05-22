@@ -96,7 +96,6 @@ class MasterMindPuzzle {
      * @param element element
      */
     private void addFirstEmpty(int[] arr, int element) {
-//        IntStream.range(0, arr.length).findAny(i -> arr[i] == ContextCompat.getColor(playActivity, R.color.gray));
         for (int i = 0; i < arr.length; i++)
             if (arr[i] == ContextCompat.getColor(playActivity, R.color.gray)) {
                 arr[i] = element;

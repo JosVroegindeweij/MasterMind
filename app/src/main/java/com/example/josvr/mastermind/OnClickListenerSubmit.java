@@ -1,9 +1,7 @@
 package com.example.josvr.mastermind;
 
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.support.v7.app.AppCompatActivity;
 
 
 class OnClickListenerSubmit implements OnClickListener {
@@ -29,11 +27,11 @@ class OnClickListenerSubmit implements OnClickListener {
         for (int i = 0; i < totalCols; i++) playActivity.updateColor(selectedRow, i);
 
         if (mmp.checkVictory())
-            playActivity.displayLoss();
+            playActivity.displayVictory();
         else {
             selectedRow = mmp.incSelectedRow();
             if (mmp.checkLoss())
-                playActivity.displayVictory();
+                playActivity.displayLoss();
             else {
                 mmp.setSelectedCol(0);
 
