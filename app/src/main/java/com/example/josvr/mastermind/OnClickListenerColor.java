@@ -1,6 +1,5 @@
 package com.example.josvr.mastermind;
 
-import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.View.OnClickListener;
 
@@ -17,12 +16,16 @@ class OnClickListenerColor implements OnClickListener {
 
     @Override
     public void onClick(View v) {
-        int currentColor = mmp.getColor("guess", mmp.getSelectedCol());
-        if (color == currentColor) mmp.setColor(ContextCompat.getColor(playActivity, R.color.gray));
-        else {
+        int col = mmp.getSelectedCol(), row = mmp.getSelectedRow();
+        int currentColor = mmp.getColor("guess", col);
+        if (color == currentColor){
+            mmp.resetColor();
+            playActivity.updateColor(row, col);
+        } else {
             mmp.setColor(color);
-            mmp.setSelectedColNextFreeCol();
-            playActivity.startPulseViewAt(mmp.getSelectedRow(), mmp.getSelectedCol());
+            playActivity.updateColor(row, col);
+            col = mmp.setSelectedColNextFreeCol();
         }
+        playActivity.startPulseViewAt(row, col);
     }
 }

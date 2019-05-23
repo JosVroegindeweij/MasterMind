@@ -1,9 +1,11 @@
 package com.example.josvr.mastermind;
 
+import android.content.Context;
 import android.support.v4.content.ContextCompat;
 
 import java.util.Arrays;
 import java.util.Random;
+import java.util.stream.IntStream;
 
 class MasterMindPuzzle {
     private int[] code;
@@ -13,22 +15,20 @@ class MasterMindPuzzle {
     private int selectedCol = 0;
     private int[][] guessesColor;
     private int[][] feedbackColor;
-    private PlayActivity playActivity;
+    private Context context;
 
     /**
      * Generates new MasterMind puzzle
      */
-    MasterMindPuzzle(PlayActivity pa) {
-        this.playActivity = pa;
+    MasterMindPuzzle(Context context) {
+        this.context = context;
         code = new int[4];
-        for (int i = 0; i < code.length; i++) {
-            code[i] = randomColor();
-        }
+        IntStream.range(0, code.length).forEach(s -> code[s] = randomColor());
 
         guessesColor = new int[totalRows][totalCols];
         feedbackColor = new int[totalRows][totalCols];
-        Arrays.stream(guessesColor).forEach(s -> Arrays.fill(s, ContextCompat.getColor(playActivity, R.color.gray)));
-        Arrays.stream(feedbackColor).forEach(s -> Arrays.fill(s, ContextCompat.getColor(playActivity, R.color.gray)));
+        Arrays.stream(guessesColor).forEach(s -> Arrays.fill(s, ContextCompat.getColor(context, R.color.gray)));
+        Arrays.stream(feedbackColor).forEach(s -> Arrays.fill(s, ContextCompat.getColor(context, R.color.gray)));
     }
 
     /**
@@ -37,12 +37,12 @@ class MasterMindPuzzle {
      * @return random color
      */
     private int randomColor() {
-        int black = ContextCompat.getColor(playActivity, R.color.black);
-        int white = ContextCompat.getColor(playActivity, R.color.white);
-        int green = ContextCompat.getColor(playActivity, R.color.green);
-        int yellow = ContextCompat.getColor(playActivity, R.color.yellow);
-        int red = ContextCompat.getColor(playActivity, R.color.red);
-        int blue = ContextCompat.getColor(playActivity, R.color.blue);
+        int black = ContextCompat.getColor(context, R.color.black);
+        int white = ContextCompat.getColor(context, R.color.white);
+        int green = ContextCompat.getColor(context, R.color.green);
+        int yellow = ContextCompat.getColor(context, R.color.yellow);
+        int red = ContextCompat.getColor(context, R.color.red);
+        int blue = ContextCompat.getColor(context, R.color.blue);
         int[] colors = {black, white, green, yellow, red, blue};
         return colors[new Random().nextInt(6)];
     }
@@ -69,23 +69,19 @@ class MasterMindPuzzle {
 
         // Checking for black feedback pins.
 
-        for (int i = 0; i < 4; i++) {
-            if (code[i] == guess[i]) {
-                addFirstEmpty(feedbackColor[selectedRow], ContextCompat.getColor(playActivity, R.color.black));
-                codePlaces[i] = true;
-                attemptPlaces[i] = true;
-            }
-        }
+        IntStream.range(0, 4).filter(s -> code[s] == guess[s]).forEach(s -> {
+            addFirstEmpty(feedbackColor[selectedRow], ContextCompat.getColor(context, R.color.black));
+            codePlaces[s] = true;
+            attemptPlaces[s] = true;
+        });
 
         // Checking for white feedback pins.
-        for (int i = 0; i < 4; i++)
-            if (!codePlaces[i])
-                for (int j = 0; j < 4; j++)
-                    if (!attemptPlaces[j] && code[i] == guess[j]) {
-                        addFirstEmpty(feedbackColor[selectedRow], ContextCompat.getColor(playActivity, R.color.white));
-                        attemptPlaces[j] = true;
-                        break;
-                    }
+
+        IntStream.range(0, 4).filter(s -> !codePlaces[s]).forEachOrdered(s ->
+            IntStream.range(0, 4).filter(t -> !attemptPlaces[t] && code[s] == guess[t]).limit(1).forEachOrdered(t -> {
+                        addFirstEmpty(feedbackColor[selectedRow], ContextCompat.getColor(context, R.color.white));
+                        attemptPlaces[t] = true;
+                    }));
     }
 
     /**
@@ -96,11 +92,10 @@ class MasterMindPuzzle {
      * @param element element
      */
     private void addFirstEmpty(int[] arr, int element) {
-        for (int i = 0; i < arr.length; i++)
-            if (arr[i] == ContextCompat.getColor(playActivity, R.color.gray)) {
-                arr[i] = element;
-                return;
-            }
+        IntStream.range(0, arr.length).filter(s -> arr[s] == ContextCompat.getColor(context, R.color.gray)).limit(1).forEach(s -> {
+           arr[s] = element;
+           return;
+        });
     }
 
     /**
@@ -109,7 +104,7 @@ class MasterMindPuzzle {
      * @return {@code true} if game is won, {@code false} otherwise.
      */
     boolean checkVictory() {
-        return feedbackColor[selectedRow][totalCols - 1] == ContextCompat.getColor(playActivity, R.color.black);
+        return feedbackColor[selectedRow][totalCols - 1] == ContextCompat.getColor(context, R.color.black);
     }
 
     /**
@@ -125,7 +120,7 @@ class MasterMindPuzzle {
      * Resets the colors in the selected row of guesses.
      */
     void resetRow() {
-        Arrays.fill(guessesColor[selectedRow], ContextCompat.getColor(playActivity, R.color.gray));
+        Arrays.fill(guessesColor[selectedRow], ContextCompat.getColor(context, R.color.gray));
     }
 
     /**
@@ -152,7 +147,10 @@ class MasterMindPuzzle {
      */
     void setColor(int color) {
         guessesColor[selectedRow][selectedCol] = color;
-        playActivity.updateColor(selectedRow, selectedCol);
+    }
+
+    void resetColor() {
+        guessesColor[selectedRow][selectedCol] = ContextCompat.getColor(context, R.color.gray);
     }
 
     /**
@@ -161,7 +159,7 @@ class MasterMindPuzzle {
      * @return {@code true} if 4 colors are provided, {@code false} otherwise
      */
     boolean isComplete() {
-        return !Arrays.stream(guessesColor[selectedRow]).anyMatch(s -> s==ContextCompat.getColor(playActivity, R.color.gray));
+        return !Arrays.stream(guessesColor[selectedRow]).anyMatch(s -> s==ContextCompat.getColor(context, R.color.gray));
     }
 
     int getSelectedCol() {
@@ -189,15 +187,15 @@ class MasterMindPuzzle {
      * If there is no free column after current selected column, selected column will be set to first free column.
      * If there is no free column, will not change selected column.
      */
-    void setSelectedColNextFreeCol() {
+    int setSelectedColNextFreeCol() {
         int col = findFirstFreeColAfterCurrentCol();
         if (col != -1) {
             setSelectedCol(col);
-            return;
         } else {
             col = findFirstFreeCol();
             if (col != -1) setSelectedCol(col);
         }
+        return selectedCol;
     }
 
     /**
@@ -207,7 +205,7 @@ class MasterMindPuzzle {
      */
     private int findFirstFreeColAfterCurrentCol() {
         for (int i = selectedCol; i < guessesColor[selectedRow].length; i++) {
-            if (guessesColor[selectedRow][i] == ContextCompat.getColor(playActivity, R.color.gray))
+            if (guessesColor[selectedRow][i] == ContextCompat.getColor(context, R.color.gray))
                 return i;
         }
         return -1;
@@ -220,7 +218,7 @@ class MasterMindPuzzle {
      */
     private int findFirstFreeCol() {
         for (int i = 0; i < selectedCol; i++) {
-            if (guessesColor[selectedRow][i] == ContextCompat.getColor(playActivity, R.color.gray))
+            if (guessesColor[selectedRow][i] == ContextCompat.getColor(context, R.color.gray))
                 return i;
         }
         return -1;

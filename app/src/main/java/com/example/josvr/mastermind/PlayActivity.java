@@ -7,6 +7,7 @@ import android.animation.PropertyValuesHolder;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,7 +38,7 @@ public class PlayActivity extends AppCompatActivity {
      * This method initiates what's needed to play the actual game, like the logic, the buttons and guess circles.
      */
     private void initiateGame() {
-        mmp = new MasterMindPuzzle(this);
+        mmp = new MasterMindPuzzle(getApplicationContext());
         int totalRows = mmp.getTotalRows(), totalCols = mmp.getTotalCols();
         guesses = new ImageView[totalRows][totalCols];
         feedback = new ImageView[totalRows][totalCols];
@@ -83,12 +84,12 @@ public class PlayActivity extends AppCompatActivity {
         findViewById(R.id.submit).setOnClickListener(new OnClickListenerSubmit(mmp, this));
         findViewById(R.id.clear).setOnClickListener(new OnClickListenerClear(mmp, this));
 
-        findViewById(R.id.buttonBlack).setOnClickListener(new OnClickListenerColor(this, mmp, getResources().getColor(R.color.black)));
-        findViewById(R.id.buttonWhite).setOnClickListener(new OnClickListenerColor(this, mmp, getResources().getColor(R.color.white)));
-        findViewById(R.id.buttonBlue).setOnClickListener(new OnClickListenerColor(this, mmp, getResources().getColor(R.color.blue)));
-        findViewById(R.id.buttonGreen).setOnClickListener(new OnClickListenerColor(this, mmp, getResources().getColor(R.color.green)));
-        findViewById(R.id.buttonYellow).setOnClickListener(new OnClickListenerColor(this, mmp, getResources().getColor(R.color.yellow)));
-        findViewById(R.id.buttonRed).setOnClickListener(new OnClickListenerColor(this, mmp, getResources().getColor(R.color.red)));
+        findViewById(R.id.buttonBlack).setOnClickListener(new OnClickListenerColor(this, mmp, ContextCompat.getColor(getApplicationContext(), R.color.black)));
+        findViewById(R.id.buttonWhite).setOnClickListener(new OnClickListenerColor(this, mmp, ContextCompat.getColor(getApplicationContext(), R.color.white)));
+        findViewById(R.id.buttonBlue).setOnClickListener(new OnClickListenerColor(this, mmp, ContextCompat.getColor(getApplicationContext(), R.color.blue)));
+        findViewById(R.id.buttonGreen).setOnClickListener(new OnClickListenerColor(this, mmp, ContextCompat.getColor(getApplicationContext(), R.color.green)));
+        findViewById(R.id.buttonYellow).setOnClickListener(new OnClickListenerColor(this, mmp, ContextCompat.getColor(getApplicationContext(), R.color.yellow)));
+        findViewById(R.id.buttonRed).setOnClickListener(new OnClickListenerColor(this, mmp, ContextCompat.getColor(getApplicationContext(), R.color.red)));
     }
 
     /**
