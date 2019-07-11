@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.josvr.mastermind">
+    package="com.spaceprograms.mastermind">
 
     <application
         android:allowBackup="true"
@@ -9,24 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".PlayActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity android:name=".TutorialActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".SettingsActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".WinActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".LossActivity"
-            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".activities.PlayActivity"
+            android:parentActivityName=".activities.MainActivity" />
+        <activity android:name=".activities.TutorialActivity"
+            android:parentActivityName=".activities.MainActivity"/>
+        <activity android:name=".activities.SettingsActivity"
+            android:parentActivityName=".activities.MainActivity"/>
 
 
     </application>

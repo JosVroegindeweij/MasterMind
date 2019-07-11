@@ -1,4 +1,4 @@
-package com.example.josvr.mastermind;
+package com.spaceprograms.mastermind.activities;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -7,6 +7,7 @@ import android.animation.PropertyValuesHolder;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -14,6 +15,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
+import com.spaceprograms.mastermind.R;
+import com.spaceprograms.mastermind.dialogs.VictoryDialogFragment;
+import com.spaceprograms.mastermind.dialogs.LossDialogFragment;
+import com.spaceprograms.mastermind.logic.MasterMindPuzzle;
+import com.spaceprograms.mastermind.logic.OnClickListenerClear;
+import com.spaceprograms.mastermind.logic.OnClickListenerColor;
+import com.spaceprograms.mastermind.logic.OnClickListenerGuess;
+import com.spaceprograms.mastermind.logic.OnClickListenerSubmit;
 
 import java.util.stream.IntStream;
 
@@ -98,7 +108,7 @@ public class PlayActivity extends AppCompatActivity {
      * @param row row
      * @param col col
      */
-    void updateColor(int row, int col) {
+    public void updateColor(int row, int col) {
         guesses[row][col].getDrawable().mutate().setTint(mmp.getColor("guess", col));
     }
 
@@ -107,14 +117,14 @@ public class PlayActivity extends AppCompatActivity {
      *
      * @param row row
      */
-    void updateColor(int row) {
+    public void updateColor(int row) {
         IntStream.range(0, guesses[row].length).forEach(s -> updateColor(row, s));
     }
 
     /**
      * Updates the color of the feedback array at the selected row according to the color array.
      */
-    void updateFeedback() {
+    public void updateFeedback() {
         int selectedRow = mmp.getSelectedRow();
         IntStream.range(0, feedback[selectedRow].length).forEach(s -> feedback[selectedRow][s].getDrawable().mutate().setTint(mmp.getColor("feedback", s)));
     }
@@ -124,7 +134,7 @@ public class PlayActivity extends AppCompatActivity {
      *
      * @param v view
      */
-    void startPulse(final View v) {
+    public void startPulse(final View v) {
         if (currentAnimation != null) {
             currentAnimation.end();
         }
@@ -154,15 +164,21 @@ public class PlayActivity extends AppCompatActivity {
      * @param row row
      * @param col col
      */
-    void startPulseViewAt(int row, int col) {
+    public void startPulseViewAt(int row, int col) {
         startPulse(guesses[row][col]);
     }
 
-    void displayVictory(){
-
+    public void displayVictory(){
+        FragmentManager fm = getSupportFragmentManager();
+        VictoryDialogFragment victoryDialog = VictoryDialogFragment.newInstance();
+        victoryDialog.setContext(getApplicationContext());
+        victoryDialog.show(fm, "fragment_victory");
     }
 
-    void displayLoss(){
-
+    public void displayLoss(){
+        FragmentManager fm = getSupportFragmentManager();
+        LossDialogFragment lossDialog = LossDialogFragment.newInstance();
+        lossDialog.setContext(getApplicationContext());
+        lossDialog.show(fm, "fragment_victory");
     }
 }

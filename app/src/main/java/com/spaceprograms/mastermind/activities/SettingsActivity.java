@@ -1,7 +1,9 @@
-package com.example.josvr.mastermind;
+package com.spaceprograms.mastermind.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.spaceprograms.mastermind.R;
 
 public class SettingsActivity extends AppCompatActivity {
 

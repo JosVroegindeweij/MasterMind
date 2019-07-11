@@ -1,15 +1,17 @@
-package com.example.josvr.mastermind;
+package com.spaceprograms.mastermind.logic;
 
 import android.view.View;
 import android.view.View.OnClickListener;
 
-class OnClickListenerGuess implements OnClickListener {
+import com.spaceprograms.mastermind.activities.PlayActivity;
+
+public class OnClickListenerGuess implements OnClickListener {
     private MasterMindPuzzle mmp;
     private PlayActivity playActivity;
     private int row;
     private int col;
 
-    OnClickListenerGuess(MasterMindPuzzle mmp, PlayActivity playActivity, int row, int col) {
+    public OnClickListenerGuess(MasterMindPuzzle mmp, PlayActivity playActivity, int row, int col) {
         this.mmp = mmp;
         this.playActivity = playActivity;
         this.row = row;

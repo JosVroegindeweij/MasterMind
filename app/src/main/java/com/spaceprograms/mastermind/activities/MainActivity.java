@@ -1,10 +1,12 @@
-package com.example.josvr.mastermind;
+package com.spaceprograms.mastermind.activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
+
+import com.spaceprograms.mastermind.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -12,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         startActivity(new Intent(getApplicationContext(), PlayActivity.class));
 
 
@@ -23,13 +26,13 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.settingsBtn).setOnClickListener(new OnClickListener(){
             public void onClick(View v){
-                startActivity(new Intent(getApplicationContext(),SettingsActivity.class));
+                startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
             }
         });
 
         findViewById(R.id.tutorialBtn).setOnClickListener(new OnClickListener(){
             public void onClick(View v){
-                startActivity(new Intent(getApplicationContext(),TutorialActivity.class));
+                startActivity(new Intent(getApplicationContext(), TutorialActivity.class));
             }
         });
     }

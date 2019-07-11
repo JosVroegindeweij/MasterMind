@@ -1,15 +1,18 @@
-package com.example.josvr.mastermind;
+package com.spaceprograms.mastermind.logic;
 
 import android.view.View;
 import android.view.View.OnClickListener;
 
+import com.spaceprograms.mastermind.activities.PlayActivity;
 
-class OnClickListenerSubmit implements OnClickListener {
+import java.util.stream.IntStream;
+
+public class OnClickListenerSubmit implements OnClickListener {
     private MasterMindPuzzle mmp;
     private PlayActivity playActivity;
 
 
-    OnClickListenerSubmit(MasterMindPuzzle mmp, PlayActivity playActivity) {
+    public OnClickListenerSubmit(MasterMindPuzzle mmp, PlayActivity playActivity) {
         this.mmp = mmp;
         this.playActivity = playActivity;
     }
@@ -17,25 +20,25 @@ class OnClickListenerSubmit implements OnClickListener {
     @Override
     public void onClick(View view) {
         int totalCols = mmp.getTotalCols();
-        int selectedRow = mmp.getSelectedRow();
+        final int selectedRow = mmp.getSelectedRow();
 
         if (!mmp.isComplete()) return;
 
         mmp.checkAttempt(selectedRow);
         playActivity.updateFeedback();
 
-        for (int i = 0; i < totalCols; i++) playActivity.updateColor(selectedRow, i);
+        IntStream.range(0,totalCols).forEach(i -> playActivity.updateColor(selectedRow, i));
 
         if (mmp.checkVictory())
             playActivity.displayVictory();
         else {
-            selectedRow = mmp.incSelectedRow();
+            mmp.incSelectedRow();
             if (mmp.checkLoss())
                 playActivity.displayLoss();
             else {
                 mmp.setSelectedCol(0);
 
-                playActivity.startPulseViewAt(selectedRow, 0);
+                playActivity.startPulseViewAt(selectedRow + 1, 0);
             }
         }
     }

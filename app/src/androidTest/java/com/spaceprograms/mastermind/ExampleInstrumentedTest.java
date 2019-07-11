@@ -1,4 +1,4 @@
-package com.example.josvr.mastermind;
+package com.spaceprograms.mastermind;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.josvr.mastermind", appContext.getPackageName());
+        assertEquals("com.example.josvr.com.spaceprograms.spaceprograms.mastermind", appContext.getPackageName());
     }
 }

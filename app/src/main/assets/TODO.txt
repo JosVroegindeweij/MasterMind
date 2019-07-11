@@ -1,9 +1,5 @@
 TO-DO:
-Win/Loss popup needs to be implemented.
+in Victory and Loss strings need to be not hardcoded.
 SettingsActivity needs to be implemented.
 TutorialActivity needs to be implemented.
-The availability of starting a second game needs to be checked.
-Game needs to resume when closing app and booting up again. (Maybe ask if user wants to resume game)
-Code should become more tidy. There are some places where code should be in a different class.
-Ending of the game is broken.
 Strings should be translated.

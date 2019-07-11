@@ -1,4 +1,4 @@
-package com.example.josvr.mastermind;
+package com.spaceprograms.mastermind;
 
 import org.junit.Test;
 

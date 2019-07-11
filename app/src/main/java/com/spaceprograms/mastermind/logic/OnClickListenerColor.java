@@ -1,14 +1,16 @@
-package com.example.josvr.mastermind;
+package com.spaceprograms.mastermind.logic;
 
 import android.view.View;
 import android.view.View.OnClickListener;
 
-class OnClickListenerColor implements OnClickListener {
+import com.spaceprograms.mastermind.activities.PlayActivity;
+
+public class OnClickListenerColor implements OnClickListener {
     private MasterMindPuzzle mmp;
     private int color;
     private PlayActivity playActivity;
 
-    OnClickListenerColor(PlayActivity playActivity, MasterMindPuzzle mmp, int color) {
+    public OnClickListenerColor(PlayActivity playActivity, MasterMindPuzzle mmp, int color) {
         this.mmp = mmp;
         this.color = color;
         this.playActivity = playActivity;

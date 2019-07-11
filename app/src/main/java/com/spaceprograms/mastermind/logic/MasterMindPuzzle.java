@@ -1,13 +1,15 @@
-package com.example.josvr.mastermind;
+package com.spaceprograms.mastermind.logic;
 
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
+
+import com.spaceprograms.mastermind.R;
 
 import java.util.Arrays;
 import java.util.Random;
 import java.util.stream.IntStream;
 
-class MasterMindPuzzle {
+public class MasterMindPuzzle {
     private int[] code;
     private final int totalRows = 10;
     private final int totalCols = 4;
@@ -20,7 +22,7 @@ class MasterMindPuzzle {
     /**
      * Generates new MasterMind puzzle
      */
-    MasterMindPuzzle(Context context) {
+    public MasterMindPuzzle(Context context) {
         this.context = context;
         code = new int[4];
         IntStream.range(0, code.length).forEach(s -> code[s] = randomColor());
@@ -130,7 +132,7 @@ class MasterMindPuzzle {
      * @param col col
      * @return color code
      */
-    int getColor(String gof, int col) {
+    public int getColor(String gof, int col) {
         switch (gof) {
             case "feedback":
                 return feedbackColor[selectedRow][col];
@@ -162,19 +164,19 @@ class MasterMindPuzzle {
         return !Arrays.stream(guessesColor[selectedRow]).anyMatch(s -> s==ContextCompat.getColor(context, R.color.gray));
     }
 
-    int getSelectedCol() {
+    public int getSelectedCol() {
         return selectedCol;
     }
 
-    int getSelectedRow() {
+    public int getSelectedRow() {
         return selectedRow;
     }
 
-    int getTotalCols() {
+    public int getTotalCols() {
         return totalCols;
     }
 
-    int getTotalRows() {
+    public int getTotalRows() {
         return totalRows;
     }
 
