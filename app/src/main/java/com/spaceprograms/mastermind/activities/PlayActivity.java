@@ -6,7 +6,6 @@ import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
@@ -14,13 +13,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.spaceprograms.mastermind.R;
-import com.spaceprograms.mastermind.dialogs.VictoryDialogFragment;
 import com.spaceprograms.mastermind.dialogs.LossDialogFragment;
+import com.spaceprograms.mastermind.dialogs.VictoryDialogFragment;
 import com.spaceprograms.mastermind.logic.MasterMindPuzzle;
 import com.spaceprograms.mastermind.logic.OnClickListenerClear;
 import com.spaceprograms.mastermind.logic.OnClickListenerColor;
@@ -68,7 +66,11 @@ public class PlayActivity extends AppCompatActivity {
         LayoutInflater li = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         ViewGroup vgGuess = findViewById(R.id.guesses);
 
+        if(li == null){
+            return;
+        }
         for (int i = 0; i < 10; i++) {
+
             LinearLayout guess = (LinearLayout) li.inflate(R.layout.guess, vgGuess, false);
 
             guesses[i][0] = guess.findViewById(R.id.guess0);

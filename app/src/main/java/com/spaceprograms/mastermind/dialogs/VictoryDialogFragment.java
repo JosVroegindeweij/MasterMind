@@ -3,7 +3,6 @@ package com.spaceprograms.mastermind.dialogs;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
@@ -39,7 +38,9 @@ public class VictoryDialogFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         Bundle args = getArguments();
-        code = args.getIntArray("code");
+        if (args != null) {
+            code = args.getIntArray("code");
+        }
 
         LayoutInflater infl = LayoutInflater.from(context);
         View codeView = infl.inflate(R.layout.dialog_endgame, null);
@@ -58,20 +59,8 @@ public class VictoryDialogFragment extends DialogFragment {
         alertDialogBuilder.setTitle(R.string.victoryTitle);
         alertDialogBuilder.setMessage(R.string.victoryMessage);
         alertDialogBuilder.setView(codeView);
-        alertDialogBuilder.setPositiveButton(R.string.newGame,  new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if (context != null) startActivity(new Intent(context, PlayActivity.class));
-            }
-        });
-        alertDialogBuilder.setNegativeButton(R.string.backToGame, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if (dialog != null) {
-                    dialog.dismiss();
-                }
-            }
-        });
+        alertDialogBuilder.setPositiveButton(R.string.newGame,  (dialog, which) -> {if (context != null) startActivity(new Intent(context, PlayActivity.class));});
+        alertDialogBuilder.setNegativeButton(R.string.backToGame, (dialog, which) -> {if (context != null) startActivity(new Intent(context, PlayActivity.class));});
 
         return alertDialogBuilder.create();
     }
