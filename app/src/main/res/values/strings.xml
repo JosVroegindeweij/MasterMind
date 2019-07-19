@@ -6,5 +6,12 @@
     <string name="play">Play</string>
     <string name="readytogo">Ready to go?</string>
     <string name="victoryTitle">Victory!</string>
+    <string name="submitButton">SUBMIT</string>
+    <string name="clearButton">CLEAR</string>
+    <string name="lossTitle">Loss!</string>
+    <string name="lossMessage">Unfortunately, you lost, the code was:</string>
+    <string name="victoryMessage">Amazing, you won, the code was:</string>
+    <string name="newGame">New Game</string>
+    <string name="backToGame">Back</string>
     <string name="ContentDescriptionCodes">These circles contain the guessed codes</string>
 </resources>

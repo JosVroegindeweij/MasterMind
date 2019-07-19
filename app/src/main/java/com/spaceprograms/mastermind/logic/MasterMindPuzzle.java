@@ -234,4 +234,8 @@ public class MasterMindPuzzle {
     int incSelectedRow() {
         return ++selectedRow;
     }
+
+    public int[] getCode(){
+        return code;
+    }
 }

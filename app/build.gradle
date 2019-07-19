@@ -3,8 +3,8 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.example.SpacePrograms.com.spaceprograms.spaceprograms.mastermind"
-        minSdkVersion 27
+        applicationId "com.spaceprograms.mastermind"
+        minSdkVersion 24
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"

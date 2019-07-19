@@ -6,6 +6,7 @@ import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
@@ -13,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -170,15 +172,15 @@ public class PlayActivity extends AppCompatActivity {
 
     public void displayVictory(){
         FragmentManager fm = getSupportFragmentManager();
-        VictoryDialogFragment victoryDialog = VictoryDialogFragment.newInstance();
+        VictoryDialogFragment victoryDialog = VictoryDialogFragment.newInstance(mmp.getCode());
         victoryDialog.setContext(getApplicationContext());
         victoryDialog.show(fm, "fragment_victory");
     }
 
     public void displayLoss(){
         FragmentManager fm = getSupportFragmentManager();
-        LossDialogFragment lossDialog = LossDialogFragment.newInstance();
+        LossDialogFragment lossDialog = LossDialogFragment.newInstance(mmp.getCode());
         lossDialog.setContext(getApplicationContext());
-        lossDialog.show(fm, "fragment_victory");
+        lossDialog.show(fm, "fragment_loss");
     }
 }

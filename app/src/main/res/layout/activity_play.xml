@@ -115,21 +115,23 @@
         android:layout_weight="2"
         android:weightSum="2">
 
-        <ImageButton
-            android:backgroundTint="@color/white"
-            android:id="@+id/submit"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:src="@mipmap/riolu_bless"
-            android:scaleType="fitCenter" />
-        <ImageButton
+        <Button
             android:backgroundTint="@color/white"
             android:id="@+id/clear"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src="@mipmap/riolu_trash"
+            android:text="@string/clearButton"
+            android:textSize="30sp"
+            android:scaleType="fitCenter" />
+        <Button
+            android:backgroundTint="@color/white"
+            android:id="@+id/submit"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/submitButton"
+            android:textSize="30sp"
             android:scaleType="fitCenter" />
     </LinearLayout>
 

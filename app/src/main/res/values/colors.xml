@@ -12,4 +12,6 @@
     <color name="yellow">#FFFF00</color>
     <color name="gray">#808080</color>
     <color name="gray_pressed">#A9A9A9</color>
+    <color name="dialogBackground">#FFFFFF</color>
+    <color name="dialogText">#000000</color>
 </resources>
