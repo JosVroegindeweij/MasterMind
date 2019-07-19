@@ -11,9 +11,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import com.spaceprograms.mastermind.R;
 import com.spaceprograms.mastermind.activities.PlayActivity;
@@ -44,7 +42,7 @@ public class LossDialogFragment extends DialogFragment {
         code = args.getIntArray("code");
 
         LayoutInflater infl = LayoutInflater.from(context);
-        View codeView = infl.inflate(R.layout.dialog_layout, null);
+        View codeView = infl.inflate(R.layout.dialog_endgame, null);
         ImageView[] codeArray = {
                 codeView.findViewById(R.id.code0), codeView.findViewById(R.id.code1),
                 codeView.findViewById(R.id.code2), codeView.findViewById(R.id.code3)};

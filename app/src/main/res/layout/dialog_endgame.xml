@@ -6,7 +6,6 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     android:weightSum="4"
-
     android:orientation="horizontal">
 
     <!-- col 0 -->

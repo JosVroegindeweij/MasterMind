@@ -1,4 +1,3 @@
 TO-DO:
 SettingsActivity needs to be implemented.
 TutorialActivity needs to be implemented.
-Strings should be translated.

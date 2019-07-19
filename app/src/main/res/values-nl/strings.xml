@@ -1,0 +1,15 @@
+<resources>
+    <string name="niy">Nog niet geïmplementeerd</string>
+    <string name="settings">Instellingen</string>
+    <string name="tutorial">Uitleg</string>
+    <string name="play">Speel</string>
+    <string name="readytogo">Klaar om te beginnen?</string>
+    <string name="victoryTitle">Gewonnen!</string>
+    <string name="submitButton">Controleren</string>
+    <string name="clearButton">Verwijderen</string>
+    <string name="lossTitle">Verloren!</string>
+    <string name="lossMessage">Jammer, de code was:</string>
+    <string name="victoryMessage">Fantastisch, de code was:</string>
+    <string name="newGame">Nieuw spel</string>
+    <string name="backToGame">Terug</string>
+</resources>

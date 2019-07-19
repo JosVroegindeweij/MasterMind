@@ -5,23 +5,17 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.graphics.drawable.DrawableCompat;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.spaceprograms.mastermind.R;
 import com.spaceprograms.mastermind.activities.PlayActivity;
 
-import java.util.Arrays;
 import java.util.stream.IntStream;
 
 public class VictoryDialogFragment extends DialogFragment {
@@ -48,7 +42,7 @@ public class VictoryDialogFragment extends DialogFragment {
         code = args.getIntArray("code");
 
         LayoutInflater infl = LayoutInflater.from(context);
-        View codeView = infl.inflate(R.layout.dialog_layout, null);
+        View codeView = infl.inflate(R.layout.dialog_endgame, null);
         ImageView[] codeArray = {
                 codeView.findViewById(R.id.code0), codeView.findViewById(R.id.code1),
                 codeView.findViewById(R.id.code2), codeView.findViewById(R.id.code3)};

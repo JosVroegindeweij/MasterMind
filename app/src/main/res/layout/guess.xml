@@ -14,7 +14,6 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     android:weightSum="6"
-
     android:orientation="horizontal">
 
     <!-- col 0 -->
@@ -24,7 +23,7 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:src="@drawable/circle"></ImageView>
+            android:src="@drawable/circle"/>
 
     <!-- col 1 -->
     <ImageView
@@ -33,7 +32,7 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:src="@drawable/circle"></ImageView>
+            android:src="@drawable/circle"/>
 
     <!-- col 2 -->
     <ImageView
@@ -42,7 +41,7 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:src="@drawable/circle"></ImageView>
+            android:src="@drawable/circle"/>
 
     <!-- col 3 -->
     <ImageView
@@ -80,7 +79,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/circle"></ImageView>
+                    android:src="@drawable/circle"/>
 
                 <ImageView
                     android:id="@+id/feedback1"
@@ -88,7 +87,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/circle"></ImageView>
+                    android:src="@drawable/circle"/>
 
             </LinearLayout>
 
@@ -105,7 +104,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/circle"></ImageView>
+                    android:src="@drawable/circle"/>
 
                 <ImageView
                     android:id="@+id/feedback3"
@@ -113,13 +112,9 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/circle"></ImageView>
+                    android:src="@drawable/circle"/>
 
             </LinearLayout>
-
-
-
-
         </LinearLayout>
 </LinearLayout>
 <!--</RelativeLayout>-->
