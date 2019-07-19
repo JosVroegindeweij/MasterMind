@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.spaceprograms.mastermind.R;
 import com.spaceprograms.mastermind.activities.PlayActivity;

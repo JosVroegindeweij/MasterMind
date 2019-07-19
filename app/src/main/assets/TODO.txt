@@ -1,5 +1,4 @@
 TO-DO:
-in Victory and Loss strings need to be not hardcoded.
 SettingsActivity needs to be implemented.
 TutorialActivity needs to be implemented.
 Strings should be translated.
