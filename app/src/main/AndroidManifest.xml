@@ -17,6 +17,10 @@
             </intent-filter>
         </activity>
 
+        <activity android:parentActivityName=".activities.MainActivity" android:name=".activities.PlayActivity"/>
+        <activity android:parentActivityName=".activities.MainActivity" android:name=".activities.SettingsActivity"/>
+        <activity android:parentActivityName=".activities.MainActivity" android:name=".activities.TutorialActivity"/>
+
     </application>
 
 </manifest>
