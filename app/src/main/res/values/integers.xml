@@ -4,4 +4,7 @@
     <integer name="guessHeight">@integer/guessWidth</integer>
     <integer name="feedbackWidth">18</integer>
     <integer name="feedbackHeight">@integer/feedbackWidth</integer>
+    <integer name="maxColors">7</integer>
+    <integer name="minColors">4</integer>
+    <integer name="colorButtonWeightSumStandard">6</integer>
 </resources>

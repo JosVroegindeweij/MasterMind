@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -25,6 +26,8 @@ import com.spaceprograms.mastermind.logic.OnClickListenerColor;
 import com.spaceprograms.mastermind.logic.OnClickListenerGuess;
 import com.spaceprograms.mastermind.logic.OnClickListenerSubmit;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.IntStream;
 
 public class PlayActivity extends AppCompatActivity {
@@ -33,6 +36,7 @@ public class PlayActivity extends AppCompatActivity {
     private MasterMindPuzzle mmp;
     private ImageView[][] guesses;
     private ImageView[][] feedback;
+    private final int[] colors = new int[] {R.color.black, R.color.white, R.color.red, R.color.blue, R.color.green, R.color.yellow, R.color.orange, R.color.pink};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,13 +102,56 @@ public class PlayActivity extends AppCompatActivity {
         findViewById(R.id.submit).setOnClickListener(new OnClickListenerSubmit(mmp, this));
         findViewById(R.id.clear).setOnClickListener(new OnClickListenerClear(mmp, this));
 
-        findViewById(R.id.buttonBlack).setOnClickListener(new OnClickListenerColor(this, mmp, ContextCompat.getColor(getApplicationContext(), R.color.black)));
-        findViewById(R.id.buttonWhite).setOnClickListener(new OnClickListenerColor(this, mmp, ContextCompat.getColor(getApplicationContext(), R.color.white)));
-        findViewById(R.id.buttonBlue).setOnClickListener(new OnClickListenerColor(this, mmp, ContextCompat.getColor(getApplicationContext(), R.color.blue)));
-        findViewById(R.id.buttonGreen).setOnClickListener(new OnClickListenerColor(this, mmp, ContextCompat.getColor(getApplicationContext(), R.color.green)));
-        findViewById(R.id.buttonYellow).setOnClickListener(new OnClickListenerColor(this, mmp, ContextCompat.getColor(getApplicationContext(), R.color.yellow)));
-        findViewById(R.id.buttonRed).setOnClickListener(new OnClickListenerColor(this, mmp, ContextCompat.getColor(getApplicationContext(), R.color.red)));
+        LinearLayout colorButtonsLayout = findViewById(R.id.colorButtons);
+        List<Button> colorButtons = new ArrayList<>();
+        LayoutInflater li = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        if (li == null) {
+            return;
+        }
+
+        int colors = getApplicationContext().getResources().getInteger(R.integer.maxColors);
+        int weightSum = getApplicationContext().getResources().getInteger(R.integer.colorButtonWeightSumStandard);
+
+        if (colors >= weightSum){
+            colorButtonsLayout.setWeightSum(colors);
+            for (int i = 0; i < colors; i++) {
+                addColorButton(li, colorButtonsLayout, colorButtons);
+            }
+        } else if (colors % 2 == 0) {
+            colorButtonsLayout.setWeightSum(weightSum);
+            for (int i = 0; i < weightSum; i++) {
+               if (i < (weightSum - colors) / 2 || i > colors){
+                   addColorButtonFiller(li, colorButtonsLayout);
+               } else {
+                   addColorButton(li, colorButtonsLayout, colorButtons);
+               }
+            }
+        } else {
+            if (weightSum % 2 == 0) {
+                colorButtonsLayout.setWeightSum(++weightSum);
+            }
+            for (int i = 0; i < weightSum; i++) {
+                if (i < (weightSum - colors) / 2 || i > colors){
+                    addColorButtonFiller(li, colorButtonsLayout);
+                } else {
+                    addColorButton(li, colorButtonsLayout, colorButtons);
+                }
+            }
+        }
     }
+
+    private void addColorButtonFiller(LayoutInflater li, LinearLayout colorButtonsLayout){
+        colorButtonsLayout.addView((View) li.inflate(R.layout.color_button_filler, colorButtonsLayout, false));
+    }
+
+    private void addColorButton(LayoutInflater li, LinearLayout colorButtonsLayout, List<Button> colorButtons) {
+        Button colorButton = (Button) li.inflate(R.layout.color_button, colorButtonsLayout, false);
+        colorButton.setOnClickListener(new OnClickListenerColor(this, mmp, ContextCompat.getColor(getApplicationContext(), this.colors[colorButtons.size()])));
+        colorButton.setBackground(ContextCompat.getDrawable(getApplicationContext(), this.colors[colorButtons.size()]));
+        colorButtons.add(colorButton);
+        colorButtonsLayout.addView(colorButton);
+    }
+
 
     /**
      * Updates the color of the guess array at {@code row},{@code col} according to the color array.

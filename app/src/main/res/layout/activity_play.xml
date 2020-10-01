@@ -37,76 +37,16 @@
 
     <!-- Color Buttons -->
     <LinearLayout
+        android:id="@+id/colorButtons"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:weightSum="6"
-        android:layout_marginTop="8dp"
+        android:weightSum="8"
+        android:layout_marginTop="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
         android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/buttonRed"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:layout_marginRight="2dp"
-            android:layout_marginLeft="2dp"
-            android:background="@drawable/color_button_red"
-            />
-
-
-        <Button
-            android:id="@+id/buttonGreen"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:layout_marginRight="2dp"
-            android:layout_marginLeft="2dp"
-            android:background="@drawable/color_button_green"/>
-
-
-        <Button
-            android:id="@+id/buttonBlue"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:layout_marginRight="2dp"
-            android:layout_marginLeft="2dp"
-            android:background="@drawable/color_button_blue"/>
-
-
-        <Button
-            android:id="@+id/buttonWhite"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:layout_marginRight="2dp"
-            android:layout_marginLeft="2dp"
-            android:background="@drawable/color_button_white"/>
-
-
-        <Button
-            android:id="@+id/buttonBlack"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:layout_marginRight="2dp"
-            android:layout_marginLeft="2dp"
-            android:background="@drawable/color_button_black"/>
-
-
-        <Button
-            android:id="@+id/buttonYellow"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:layout_marginRight="2dp"
-            android:layout_marginLeft="2dp"
-            android:background="@drawable/color_button_yellow"/>
-
-
     </LinearLayout>
 
     <LinearLayout
