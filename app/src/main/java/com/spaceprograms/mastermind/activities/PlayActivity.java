@@ -6,6 +6,7 @@ import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
@@ -147,7 +148,13 @@ public class PlayActivity extends AppCompatActivity {
     private void addColorButton(LayoutInflater li, LinearLayout colorButtonsLayout, List<Button> colorButtons) {
         Button colorButton = (Button) li.inflate(R.layout.color_button, colorButtonsLayout, false);
         colorButton.setOnClickListener(new OnClickListenerColor(this, mmp, ContextCompat.getColor(getApplicationContext(), this.colors[colorButtons.size()])));
-        colorButton.setBackground(ContextCompat.getDrawable(getApplicationContext(), this.colors[colorButtons.size()]));
+
+        GradientDrawable background = (GradientDrawable) ContextCompat.getDrawable(getApplicationContext(), R.drawable.color_button);
+        if (background != null){
+            ((GradientDrawable) background.mutate()).setColor(ContextCompat.getColor(getApplicationContext(), this.colors[colorButtons.size()]));
+        }
+        colorButton.setBackground(background);
+
         colorButtons.add(colorButton);
         colorButtonsLayout.addView(colorButton);
     }
