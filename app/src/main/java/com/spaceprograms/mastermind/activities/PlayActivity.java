@@ -141,10 +141,23 @@ public class PlayActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * This method adds fillers for the color button layout.
+     *
+     * @param li LayoutInflater to be used
+     * @param colorButtonsLayout LinearLayout to add the views to
+     */
     private void addColorButtonFiller(LayoutInflater li, LinearLayout colorButtonsLayout){
-        colorButtonsLayout.addView((View) li.inflate(R.layout.color_button_filler, colorButtonsLayout, false));
+        colorButtonsLayout.addView(li.inflate(R.layout.color_button_filler, colorButtonsLayout, false));
     }
 
+    /**
+     * This method adds color buttons dynamically.
+     *
+     * @param li LayoutInflater to be used
+     * @param colorButtonsLayout LinearLayout to add the buttons to
+     * @param colorButtons List of color buttons to access individual buttons at a later point.
+     */
     private void addColorButton(LayoutInflater li, LinearLayout colorButtonsLayout, List<Button> colorButtons) {
         Button colorButton = (Button) li.inflate(R.layout.color_button, colorButtonsLayout, false);
         colorButton.setOnClickListener(new OnClickListenerColor(this, mmp, ContextCompat.getColor(getApplicationContext(), this.colors[colorButtons.size()])));
