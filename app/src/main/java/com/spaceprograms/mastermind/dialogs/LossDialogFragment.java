@@ -6,11 +6,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+
+import androidx.fragment.app.DialogFragment;
 
 import com.spaceprograms.mastermind.R;
 import com.spaceprograms.mastermind.activities.PlayActivity;
@@ -34,7 +34,6 @@ public class LossDialogFragment extends DialogFragment {
         return ldf;
     }
 
-    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         Bundle args = getArguments();

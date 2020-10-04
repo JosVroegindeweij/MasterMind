@@ -1,8 +1,8 @@
 package com.spaceprograms.mastermind.logic;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
+
+import androidx.core.content.ContextCompat;
 
 import com.spaceprograms.mastermind.R;
 
@@ -94,7 +94,7 @@ public class MasterMindPuzzle {
      * @param arr   array
      * @param element element
      */
-    private void addFirstEmpty(@NonNull int[] arr, int element) {
+    private void addFirstEmpty(int[] arr, int element) {
         IntStream.range(0, arr.length).filter(s -> arr[s] == ContextCompat.getColor(context, R.color.gray)).limit(1).forEach(s -> arr[s] = element);
     }
 
