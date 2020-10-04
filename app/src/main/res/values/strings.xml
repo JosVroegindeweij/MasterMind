@@ -1,10 +1,11 @@
 <resources>
-    <string name="app_name">MasterMind</string>
+    <string name="app_name" translatable="false">MasterMind</string>
     <string name="niy">Not implemented yet</string>
     <string name="settings">Settings</string>
     <string name="tutorial">Tutorial</string>
     <string name="play">Play</string>
     <string name="readytogo">Ready to go?</string>
+    <string name="colorSelector">Select your colors</string>
     <string name="victoryTitle">Victory!</string>
     <string name="submitButton">Check</string>
     <string name="clearButton">Clear</string>

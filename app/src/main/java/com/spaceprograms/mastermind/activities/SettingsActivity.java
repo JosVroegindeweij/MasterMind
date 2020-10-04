@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.spaceprograms.mastermind.R;
+import com.spaceprograms.mastermind.fragments.SettingsFragment;
 
 import java.util.Objects;
 
@@ -21,6 +22,10 @@ public class SettingsActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        //TODO implement
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.settings_container, new SettingsFragment())
+                .commit();
     }
 }

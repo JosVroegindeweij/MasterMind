@@ -21,8 +21,8 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 
 import com.spaceprograms.mastermind.R;
-import com.spaceprograms.mastermind.dialogs.LossDialogFragment;
-import com.spaceprograms.mastermind.dialogs.VictoryDialogFragment;
+import com.spaceprograms.mastermind.fragments.LossDialogFragment;
+import com.spaceprograms.mastermind.fragments.VictoryDialogFragment;
 import com.spaceprograms.mastermind.logic.MasterMindPuzzle;
 import com.spaceprograms.mastermind.logic.OnClickListenerClear;
 import com.spaceprograms.mastermind.logic.OnClickListenerColor;

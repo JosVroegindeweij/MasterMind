@@ -1,4 +1,4 @@
-package com.spaceprograms.mastermind.dialogs;
+package com.spaceprograms.mastermind.fragments;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 
 import com.spaceprograms.mastermind.R;
@@ -17,23 +18,20 @@ import com.spaceprograms.mastermind.activities.PlayActivity;
 
 import java.util.stream.IntStream;
 
-public class LossDialogFragment extends DialogFragment {
+public class VictoryDialogFragment extends DialogFragment {
 
     private Context context;
     private int[] code;
 
-    public LossDialogFragment() {
-
-    }
-
-    public static LossDialogFragment newInstance(int[] code) {
-        LossDialogFragment ldf = new LossDialogFragment();
+    public static VictoryDialogFragment newInstance(int[] code) {
+        VictoryDialogFragment vdf = new VictoryDialogFragment();
         Bundle args = new Bundle();
         args.putIntArray("code", code);
-        ldf.setArguments(args);
-        return ldf;
+        vdf.setArguments(args);
+        return vdf;
     }
 
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         Bundle args = getArguments();
@@ -54,13 +52,13 @@ public class LossDialogFragment extends DialogFragment {
             codeArray[i].setImageDrawable(d);
         });
 
-
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
-        alertDialogBuilder.setTitle(R.string.lossTitle);
-        alertDialogBuilder.setMessage(R.string.lossMessage);
+        alertDialogBuilder.setTitle(R.string.victoryTitle);
+        alertDialogBuilder.setMessage(R.string.victoryMessage);
         alertDialogBuilder.setView(codeView);
         alertDialogBuilder.setPositiveButton(R.string.newGame,  (dialog, which) -> {if (context != null) startActivity(new Intent(context, PlayActivity.class));});
         alertDialogBuilder.setNegativeButton(R.string.backToGame, (dialog, which) -> {if (context != null) startActivity(new Intent(context, PlayActivity.class));});
+
         return alertDialogBuilder.create();
     }
 

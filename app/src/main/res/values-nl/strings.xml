@@ -12,4 +12,5 @@
     <string name="victoryMessage">Fantastisch, de code was:</string>
     <string name="newGame">Nieuw spel</string>
     <string name="backToGame">Terug</string>
+    <string name="colorSelector">Selecteer kleuren</string>
 </resources>
